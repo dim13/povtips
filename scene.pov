@@ -1,7 +1,17 @@
 camera { location <0, 5, -10> look_at 0 angle 35 }
 light_source
 { <100, 200, -150>/50, 1
+  fade_distance 5 fade_power 2
+  area_light x*3, y*3, 12, 12 circular orient adaptive 0
+}
+light_source
+{ <-400, 150, -50>/50, <1,.8,.4>
   fade_distance 6 fade_power 2
+  area_light x*3, y*3, 12, 12 circular orient adaptive 0
+}
+light_source
+{ <150, 200, 400>/50, <.3,.8,1>
+  fade_distance 5 fade_power 2
   area_light x*3, y*3, 12, 12 circular orient adaptive 0
 }
 
@@ -31,7 +41,7 @@ plane
     }
     rotate y*20
   }
-  finish { specular .5 reflection .2 }
+  finish { specular 1 roughness .02 reflection .2 }
 }
 
 #declare Metal =
