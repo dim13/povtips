@@ -1,5 +1,9 @@
 camera { location <0, 5, -10> look_at 0 angle 35 }
-light_source { <100, 200, -150>, 1 }
+light_source
+{ <100, 200, -150>/50, 1
+  fade_distance 6 fade_power 2
+  area_light x*3, y*3, 12, 12 circular orient adaptive 0
+}
 
 #declare PlankNormal =
   normal
