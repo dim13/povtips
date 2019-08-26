@@ -1,2 +1,2 @@
 scene.png: scene.pov
-	povray +O$@ +I$? +W1024 +H768
+	povray +A +O$@ +I$? +W1024 +H768
