@@ -1,8 +1,32 @@
 camera { location <0, 5, -10> look_at 0 angle 35 }
 light_source { <100, 200, -150>, 1 }
+
+#declare PlankNormal =
+  normal
+  { gradient x 2 slope_map { [0 <0,1>][.05 <1,0>][.95 <1,0>][1 <0,-1>] }
+    scale 2
+  };
+
 plane
 { y, -.25
-  pigment { rgb <.7,.95,1> }
+  //pigment { rgb <.7,.95,1> }
+  pigment
+  { wood color_map
+    { [.4 rgb <.9, .7, .4>]
+      [.6 rgb <1, .8, .6>]
+    }
+    turbulence .5
+    scale <1, 1, 10>*.5
+    rotate y*20
+  }
+  normal
+  { average normal_map
+    { [1 PlankNormal]
+      [1 wood .5 slope_map { [0 <0,0>][.5 <.5,1>][1 <1,0>] }
+         turbulence .5 scale <1, 1, 10>*.5]
+    }
+    rotate y*20
+  }
   finish { specular .5 reflection .2 }
 }
 
