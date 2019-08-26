@@ -1,17 +1,49 @@
 camera { location <0, 5, -10> look_at 0 angle 35 }
 light_source { <100, 200, -150>, 1 }
-plane { y, -.25 pigment { rgb 1 } }
+plane
+{ y, -.25
+  pigment { rgb <.7,.95,1> }
+  finish { specular .5 reflection .2 }
+}
+
+#declare Metal =
+  pigment
+  { bozo color_map
+    { [0 rgb <.8, .75, .5>]
+      [.6 rgb <.8, .75, .5>]
+      [.7 rgb <.7, .4, .2>]
+      [1 rgb <.5, .35, .15>]
+    }
+    turbulence .4
+    scale .2
+  }
 
 #declare Cyl1 =
   cylinder
   { -x, x, .25
-    pigment { rgb 1 }
+    pigment { Metal }
+    finish { specular .5 reflection { .3, .6 } }
+    normal
+    { gradient x .1
+      slope_map
+      { [0 <1, 0>][.5 <0, -1>][.5 <0, 1>][1 <1, 0>]
+      }
+      scale <.1, 0, 0>
+    }
   };
 
 #declare Cyl2 =
   cylinder
   { -y*.25, 0, .3
-    pigment { rgb 1 }
+    pigment { rgb <.7, .75, .8> }
+    finish { specular .5 reflection { .3, .6 } }
+    normal
+    { radial .2
+      slope_map
+      { [0 <1, 0>][.5 <0, -1>][.5 <0, 1>][1 <1, 0>]
+      }
+      frequency 20
+    }
   };
 
 object { Cyl1 rotate y*-25 }
