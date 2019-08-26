@@ -1,4 +1,8 @@
-camera { location <0, 5, -10> look_at 0 angle 35 }
+camera
+{ location <0, 5, -10> look_at 0 angle 35
+  focal_point 0 blur_samples 50 aperture .75
+}
+
 light_source
 { <100, 200, -150>/50, 1
   fade_distance 5 fade_power 2
